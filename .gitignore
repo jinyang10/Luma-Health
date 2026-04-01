@@ -1,7 +1,8 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# dependencies
-/node_modules
+# tells git what to ignore
+# i.e., ignore /node_modules since it's taken from npm - no need to keep track of these files
+/node_modules 
 /.pnp
 .pnp.*
 .yarn/*

@@ -32,3 +32,7 @@ export default function RootLayout({
     </html>
   );
 }
+
+
+// app/page.tsx     http://localhost:3000
+// app/toyprob4/page.jsx    http://localhost:3000/toyprob4

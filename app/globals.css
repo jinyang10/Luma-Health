@@ -1,4 +1,5 @@
-/* all of our css */
+/* Import Roboto font for the new design system */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&display=swap');
 
 @import "tailwindcss";
 
@@ -8,28 +9,17 @@
 
 @custom-variant dark (&:is(.dark *));
 
+
 @theme inline {
-  --color-background: var(--background);
+  /* =========================================
+     Existing Shadcn Theme Variables
+     ========================================= */
+
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
+
   --color-ring: var(--ring);
   --color-input: var(--input);
-  --color-border: var(--border);
+ 
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
   --color-accent: var(--accent);
@@ -38,11 +28,92 @@
   --color-secondary-foreground: var(--secondary-foreground);
   --color-secondary: var(--secondary);
   --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
+
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  
+
+  /* =========================================
+     New Design System: Semantic Colors
+     ========================================= */
+
+  --color-background: var(--background-0);
+  --color-background-1: var(--background-1);
+  --color-background-2: var(--background-2);
+  --color-background-3: var(--background-3);
+  --color-background-4: var(--background-4);
+
+    /* BRAND */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-disabled: var(--primary-disabled);
+  --color-primary-subtle: var(--primary-subtle);
+
+  --color-text-title: var(--text-title);
+  --color-text-body: var(--text-body);
+  --color-text-body-subtle: var(--text-body-subtle);
+  --color-text-caption-1: var(--text-caption-1);
+  --color-text-caption-2: var(--text-caption-2);
+
+
+  --color-border: var(--border);
+  --color-border-2: var(--border-2);
+  --color-border-3: var(--border-3);
+
+  /* FUNCTIONAL */
+  --color-positive-1: var(--positive-1);
+  --color-positive-2: var(--positive-2);
+  --color-positive-3: var(--positive-3);
+
+  --color-notice-1: var(--notice-1);
+  --color-notice-2: var(--notice-2);
+  --color-notice-3: var(--notice-3);
+
+  --color-alert-1: var(--alert-1);
+  --color-alert-2: var(--alert-2);
+  --color-alert-3: var(--alert-3);
+
+  /* DATA */
+  --color-data-blue: var(--data-blue);
+  --color-data-red: var(--data-red);
+  --color-data-light-blue: var(--data-light-blue);
+  --color-data-green: var(--data-green);
+  --color-data-yellow: var(--data-yellow);
+  --color-data-purple: var(--data-purple);
+
+
+}
+
+@theme {
+
+  /* font family */
+
+  --font-sans: "Roboto", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, SF Mono;
+
+    /* =========================================
+     New Design System: Typography
+     ========================================= */
+  --text-4xl: 36px;
+  --text-4xl--line-height: 40px;
+
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-xl: 20px;
+  --text-xl--line-height: 30px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-xs: 12px;
+  --text-xs--line-height: 18px;
+
+  --radius: 0.625rem;
+
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -50,85 +121,248 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  
+
+  /* =========================================
+     New Design System: Effects & Borders
+     ========================================= */
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --radius-lg: 8px;
+  --radius-xl: 16px;
+  --radius-full: 999px;
+
+  --border-width-thin: 1px;
+  --border-width-regular: 2px;
+  --border-width-thick: 3px;
+
+  --shadow-small: 0px 1px 2px 0px rgb(0 0 0 / 0.05);
+  --shadow-medium: 0px 1px 4px 0px rgb(0 0 0 / 0.15);
+  --shadow-large: 0px 1px 8px 0px rgb(0 0 0 / 0.25);
+
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+
+
+
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  /* Existing Shadcn - Converted to Hex */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+
+  --card: #ffffff;
+  --card-foreground: #0a0a0a;
+  --popover: #ffffff;
+  --popover-foreground: #0a0a0a;
+
+  --primary: #171717;
+  --primary-foreground: #fafafa;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #171717;
+  --muted: #f5f5f5;
+  --muted-foreground: #737373;
+  --accent: #f5f5f5;
+  --accent-foreground: #171717;
+  --destructive: #e7000b;
+  
+  --input: #e5e5e5;
+  --ring: #a1a1a1;
+
+/* =========================
+     BRAND COLORS
+  ========================= */
+  --primary: #1B9AF5;
+  --primary-hover: #32B7FF;
+  --primary-disabled: #1b9af580;
+  --primary-subtle: #EFF6FF;
+
+  /* =========================
+     FUNCTIONAL COLORS
+  ========================= */
+  --positive-1: #17D074;
+  --positive-2: #40E894;
+  --positive-3: #17d07480;
+
+  --notice-1: #FF9210;
+  --notice-2: #FFAC38;
+  --notice-3: #FF921080;
+
+  --alert-1: #FA3011;
+  --alert-2: #FF7E6A;
+  --alert-3: #FA301180;
+
+  /* =========================
+     TEXT COLORS
+  ========================= */
+  --text-title: #030712;
+  --text-body: #1F2937;
+  --text-body-subtle: #4B5563;
+  --text-caption-1: #9CA3AF;
+  --text-caption-2: #FFFFFF;
+
+  /* =========================
+     BACKGROUND
+  ========================= */
+  --background-0: #FFFFFF;
+  --background-1: #F9FAFB;
+  --background-2: #F3F4F6;
+  --background-3: #E5E7EB;
+  --background-4: #101828;
+
+  /* =========================
+     STROKE
+  ========================= */
+  --border: #F3F4F6;
+  --border-2: #D1D5DB;
+  --border-3: #6B7280;
+
+  /* =========================
+     DATA COLORS
+  ========================= */
+  --data-blue: #4285F4;
+  --data-red: #DB4437;
+  --data-light-blue: #4DD0E1;
+  --data-green: #0F9D58;
+  --data-yellow: #FFA000;
+  --data-purple: #673AB7;
+
+  /* =========================
+     TYPOGRAPHY (Tailwind will use these)
+  ========================= */
+  --font-sans: var(--font-sans);
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  /* Existing Shadcn - Converted to Hex */
+ 
+  --foreground: #fafafa;
+  --card: #171717;
+  --card-foreground: #fafafa;
+  --popover: #171717;
+  --popover-foreground: #fafafa;
+
+  --primary-foreground: #171717;
+  --secondary: #262626;
+  --secondary-foreground: #fafafa;
+  --muted: #262626;
+  --muted-foreground: #a1a1a1;
+  --accent: #262626;
+  --accent-foreground: #fafafa;
+  --destructive: #ff6467;
+ 
+  --input: #ffffff26;
+  --ring: #737373;
+
+  /* =========================================
+     New Design System: Dark Theme Overrides
+     ========================================= */
+  --text-title: #F9FAFB;
+  --text-body: #E5E7EB;
+  --text-body-subtle: #9CA3AF;
+  --text-caption-1: #4B5563;
+
+
+  --background-0: #1F2937;
+  --background-1: #030712;
+  --background-2: #111827;
+
+  --ds-bg-3: #1F2937; /* Fallback */
+  --ds-bg-4: #030712; /* Fallback */
+
+  /* stroke colors */
+  --border: #111827;
+  --border-2: #374151;
+  --border-3: #6B7280;
+
 }
 
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
+  
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    
   }
-  html {
-    @apply font-sans;
+
+  h1 {
+    @apply text-3xl md:text-4xl font-bold text-text-title font-sans leading-9 md:leading-10;
   }
+
+  h2 {
+    @apply text-xl md:text-2xl font-bold text-text-title font-sans;
+    line-height: var(--text-xl-line-height);
+
+    /* line-height is a css property */
+    /* md is a default tailwind utility class */
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-2xl--line-height);
+    }
+
+  }
+
+  h3 {
+    @apply text-lg md:text-xl font-semibold text-text-title font-sans;
+    line-height: var(--text-lg-line-height);
+
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-xl--line-height);
+    }
+  }
+
+  h4 {
+    @apply text-base md:text-lg font-semibold text-text-title font-sans;
+    line-height: var(--text-base--line-height);
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-lg--line-height);
+    }
+
+  }
+  
+}
+@layer components {
+  .text-caption {
+    @apply text-xs text-text-caption-1 font-sans;
+    line-height: var(--text-xs--line-height);
+
+  }
+
+  .body-semibold {
+    @apply text-sm md:text-base font-semibold font-sans;
+    line-height: var(--text-sm--line-height);
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-base--line-height);
+    }
+  }
+
+  .body-regular {
+    @apply text-xs md:text-sm text-text-body-subtle font-normal font-sans;
+    line-height: var(--text-xs--line-height);
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-sm--line-height);
+    }
+  }
+  
+  .body-small {
+    @apply text-xs md:text-sm text-text-body font-normal font-sans;
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-sm--line-height);
+    }
+  }
+
+  .body-small-bold {
+    @apply text-xs md:text-sm text-text-body font-bold font-sans;
+    line-height: var(--text-xs--line-height);
+    @media (width >= theme(--breakpoint-md)) {
+      line-height: var(--text-sm--line-height);
+    }
+  }
+
+}
+
+@layer utilities {
+
 }

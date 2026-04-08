@@ -33,9 +33,12 @@ export default function MenuClient() {
                 
 
                 {/* Book Appointment Button */}
-                <Button variant="default">Book Appointment</Button>
+                {/* goes to the Doctors section on homepage */}
+                <Button asChild variant="brand" size="lg">
+                    <Link href={"/"} className="text-text-caption-2">Book Appointment</Link>
+                </Button>
 
-                {/*  */}
+                {/* Mobile Nav */}
 
 
             </nav>

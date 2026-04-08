@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { Plus, Sun } from "lucide-react";
+import { APP_NAME } from "@/lib/constants";
+import MenuClient from "../molecules/menu-client";
 
 export default function Header() {
   return (
@@ -13,13 +15,13 @@ export default function Header() {
               <Plus size={24} strokeWidth={3} />
             </div>
             {/* Brand Name */}
-            <h3 className="hidden lg:block">CareSync Medical Center</h3>
+            <h3 className="hidden lg:block">{APP_NAME}</h3>
           </Link>
         </div>
 
         {/*  Right Side  */}
         <div>
-          
+          <MenuClient />
         </div>
       </div>
     </header>

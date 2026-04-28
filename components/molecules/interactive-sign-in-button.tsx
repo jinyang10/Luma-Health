@@ -42,6 +42,7 @@ export default function InteractiveSignInButton({onNavigateStart, className}: In
   return (
     <Button
       variant="secondary"
+      size="lg"
       onClick={handleClick}
       //when isNavigating is true -> button is disabled
       disabled={isNavigating}

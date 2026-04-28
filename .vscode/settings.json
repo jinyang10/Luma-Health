@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "app/toyprob4": true,
+        "app/reactToyProb": true,
+        "app/toyprob4pt2": true
+    }
+}

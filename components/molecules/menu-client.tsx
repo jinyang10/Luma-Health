@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Sun, MoreVertical } from "lucide-react";
+import { EllipsisVertical, MoreVertical } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Sheet,
@@ -12,8 +12,30 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "./theme-toggle";
+import { useState } from "react";
 
-export default function MenuClient() {
+interface MenuClientProps {
+    // React.ReactNode is a very flexible type: 
+    // almost any type that React can render
+    desktopAvatar: React.ReactNode;
+}
+
+// define component for right side of header
+export default function MenuClient({desktopAvatar} : MenuClientProps) {
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+    const closeMobileMenu = ()=> {
+        setIsMobileMenuOpen(false);
+
+    };
+    
+    // by default: when you open/close the side sheet, component returns focus to the element that originally opened the sheet
+    // if you don't prevent default behavior, when user clicks on trigger to close it, library automatically shifts 
+    // browser's focus back to the 3 dots --> results in seeing a blue/black outline around the trigger button
+    const handleSheetCloseAutoFocus = (event:Event)=> {
+        event.preventDefault();
+    };
+
     const router = useRouter();
 
     const handleBookAppointment = () => router.push("/");
@@ -25,60 +47,81 @@ export default function MenuClient() {
             <nav className="hidden md:flex items-center gap-3">
                 {/* Theme Toggle */}
                 <ThemeToggle />
-
+                
                 {/* Home Link */}
                 <Link href="/" className="body-regular text-text-body hover:text-primary"> 
                 Home 
                 </Link>
-                
 
                 {/* Book Appointment Button */}
                 {/* goes to the Doctors section on homepage */}
+                {/* asChild: tells component to render its Child element as the rendered DOM element instead of itself*/}
                 <Button asChild variant="brand" size="lg">
                     <Link href={"/"} className="text-text-caption-2">Book Appointment</Link>
                 </Button>
 
-                {/* Mobile Nav */}
-
+                {/* sign in 'button'*/}
+                {/* this is either: a Sign In button, or an Avatar */}
+                {desktopAvatar}
 
             </nav>
 
-            {/* Mobile */}
-            <nav className="flex md:hidden items-center">
-                <Sheet>
-                    <SheetTrigger asChild>
-                        <Button variant="ghost" size="icon" aria-label="Open menu" className="text-gray-700 hover:text-gray-900">
-                            <MoreVertical size={24} />
-                        </Button>
+            {/* Mobile Navigation*/}
+            {/* Navigation for mobile view added here */}
+            <nav className="md:hidden">
+
+                {/* when user clicks on trigger to open/close the sheet, we call setter function and pass value true/false to it
+                and isMobileMenuOpen's value is updated */}
+                {/* this is a Controlled Component (React state controls Sheet's open/closed status/value) */}
+                <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
+
+                    {/* Trigger: determines what controls the opening of the sheet: 3 vertical dots */}
+
+                    {/* when you click on the button, sheettrigger captures the click and tells parent sheet to change its 
+                    internal state to open --> renders the sheet content*/}
+                    <SheetTrigger className="align-middle" onClick={()=>setIsMobileMenuOpen(true)}>
+                        
+                        {/* the 3 vertical dots (EllipsisVertical) is the clickable element for SheetTrigger */}
+                        <EllipsisVertical />
                     </SheetTrigger>
                     
-                    <SheetContent side="right" className="w-[300px] sm:w-[400px] flex flex-col bg-background">
-                        <SheetHeader className="border-b pb-4 text-left">
-                            <SheetTitle className="font-bold text-lg text-foreground">Menu</SheetTitle>
+                    {/* Content: Sidebar */}
+                    <SheetContent 
+                        // side="right" means the sheetcontent (sidebar) will appear on the right side
+                        side="right" 
+                        onCloseAutoFocus={handleSheetCloseAutoFocus}
+                        className="flex flex-col items-start p-4 bg-bakcground-2"
+                    >
+                        <SheetHeader className="border-b border-stroke-1 pb-4 text-left">
+                            <SheetTitle>Menu</SheetTitle>
                         </SheetHeader>
 
-                        {/* Mobile Navigation Links */}
-                        <div className="flex flex-col gap-6 mt-6 flex-1">
-                            {/* Theme Toggle (Mobile) */}
-                            <div className="flex justify-start">
-                                <button aria-label="Toggle theme" className="text-gray-700 hover:text-gray-900 transition-colors">
-                                    <Sun size={20} strokeWidth={2} />
-                                </button>
-                            </div>
+                        {/* Top Items */}
+                            
+                                <ThemeToggle />
 
-                            <Link href="/" className="text-sm font-medium text-gray-700 hover:text-gray-900 transition-colors">
+                            <Link 
+                                href="/" 
+                                className="body-regular text-text-body hover:text-primary transition-colors"
+                            >
                                 Home
                             </Link>
 
-                            <Button variant="ghost" className="w-full" onClick={handleBookAppointment}>
+                            <Button 
+                                variant="brand" 
+                                className="w-full" 
+                                onClick={handleBookAppointment}
+                            >
                                 Book Appointment
                             </Button>
-                        </div>
 
-                        {/* Mobile Footer Area (Sign In) */}
-                        <div className="mt-auto pt-6 pb-2">
-                            {/* TODO: Replace this block with <SigninOrAvatar /> later */}
-                            <Button variant="secondary" className="w-full" onClick={handleSignIn}>
+                        {/* Bottom Pinned Item */}
+                        <div className="mt-auto pb-4">
+                            <Button 
+                                variant="secondary" 
+                                className="w-full bg-bg-2 hover:bg-bg-3 text-text-body" 
+                                onClick={handleSignIn}
+                            >
                                 Sign In
                             </Button>
                         </div>

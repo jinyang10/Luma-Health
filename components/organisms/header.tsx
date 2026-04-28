@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Plus, Sun } from "lucide-react";
 import { APP_NAME } from "@/lib/constants";
 import MenuClient from "../molecules/menu-client";
+import SigninOrAvatar from "../molecules/signin-avatar";
 
 export default function Header() {
   return (
@@ -19,9 +20,9 @@ export default function Header() {
           </Link>
         </div>
 
-        {/*  Right Side  */}
+        {/*  Right Side: Navigation links */}
         <div>
-          <MenuClient />
+          <MenuClient desktopAvatar={< SigninOrAvatar />}/>
         </div>
       </div>
     </header>

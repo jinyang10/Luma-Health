@@ -31,6 +31,8 @@ export default function InteractiveSignInButton({onNavigateStart, className}: In
         router.push("/sign-in");
 
         //if onNavigateStart is provided, call the function
+
+        // when user is navigated to the sign in page, we close the sidesheet
         if (onNavigateStart) {
             onNavigateStart();
         }

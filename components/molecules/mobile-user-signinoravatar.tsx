@@ -8,7 +8,7 @@ interface MobileUserMenuProps {
     onMobileActionComplete?: ()=> void;
 }
 
-export default function mobileUserSignOrAvator({onMobileActionComplete}: MobileUserMenuProps) {
+export default function MobileUserSignOrAvator({onMobileActionComplete}: MobileUserMenuProps) {
     return (
         // in order to pass the function (which closes the sidebar) down, must receive it as a prop from menu-client
         <InteractiveSignInButton onNavigateStart={onMobileActionComplete}/>

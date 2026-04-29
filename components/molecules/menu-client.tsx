@@ -14,6 +14,7 @@ import {
 } from "@/components/ui/sheet";
 import { ThemeToggle } from "./theme-toggle";
 import { useState } from "react";
+import MobileUserSignOrAvator from "./mobile-user-signinoravatar";
 
 interface MenuClientProps {
     // React.ReactNode is a very flexible type: 
@@ -122,9 +123,10 @@ export default function MenuClient({ desktopAvatar }: MenuClientProps) {
                             Book Appointment
                         </Button>
 
-                        {/* Render the desktopAvatar prop here for the Signin component*/}
                         <SheetFooter className="w-full">
-                            {desktopAvatar}
+
+                            {/* MobileUserSignOrAvatar component is self-closing since it has no children */}
+                            <MobileUserSignOrAvator onMobileActionComplete={closeMobileMenu} />
                         </SheetFooter>
 
                     </SheetContent>

@@ -13,7 +13,7 @@ export default function DepartmentCard({name, iconName}: DepartmentCardProps) {
   const displayName = name;
 
   return (
-    <Card className="w-full mx-auto bg-background border border-border-2 rounded-lg shadow-md p-0">
+    <Card className="w-full bg-background border border-border-2 rounded-lg shadow-md p-0">
       {/* 
         CardContent has default padding, so we reset it with p-0 
         since we are centering everything using the parent Card's flexbox 

@@ -1,8 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Star } from "lucide-react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import ViewProfileButton from "./view-profile-button";
 
 interface DoctorCardProps {
     id: string;
@@ -11,57 +10,56 @@ interface DoctorCardProps {
     rating?: number;
     reviewCount: number;
     imageUrl: string;
-
 }
 
 export default function DoctorCard(
     { id, name, specialty, rating, reviewCount, imageUrl }: DoctorCardProps) {
     return (
-        <Card className="w-full flex gap-y-4 p-6 max-w-sm rounded-lg shadow-sm bg-background overflow-hidden border border-border-2">
-            <CardContent className="p-0 w-full flex flex-col md:flex-row items-center gap-3 md:gap-4">
+        <Card className="w-full flex flex-col max-w-sm rounded-lg shadow-sm bg-background overflow-hidden border border-border-2">
+            
+            <CardContent className="w-full flex flex-col md:flex-row items-start gap-3 md:gap-4 pt-6">
 
-                {/* Avatar */}
+                {/* Avatar PIC */}
                 <div className="relative shrink-0">
-                    <div className="w-12 md:w-16 aspect-square rounded-full">
-                        {/* Note: Ensure your next.config.js is configured if using external image URLs */}
+                    <div className="rounded-full w-12 md:w-16 aspect-square overflow-hidden relative">
+                        {imageUrl ? (
                         <Image
                             src={imageUrl}
                             alt={`Profile picture of ${name}`}
                             fill
-                            className="rounded-full object-cover"
-                            sizes="72px"
-                        />
+                            className="object-cover"
+                            
+                        />) : 
+                        (<div className="w-full h-full bg-gray-200 flex items-center justify-center"> 
+                            <span className="text-gray-400 text-xl font-bold"> {name?.charAt(0)}</span>
+                        </div>
+                        )}
                     </div>
-
                 </div>
 
-
-                {/* Text Details */}
-                <div className="flex flex-col">
-                    <h3 className="font-bold text-[19px] text-gray-900 tracking-tight leading-snug">
+                {/* Text: Doctor Details */}
+                <div className="flex flex-col min-w-0 flex-1">
+                    <h2 className="body-semibold text-text-title truncate">
                         {name}
-                    </h3>
-                    <p className="text-[15px] text-gray-600 mb-1">
+                    </h2>
+                    <p className="body-regular text-text-body-subtle truncate">
                         {specialty}
                     </p>
 
                     {/* Rating */}
-                    <div className="flex items-center gap-1.5">
-                        <Star className="w-[18px] h-[18px] text-[#FFB000] fill-[#FFB000]" />
-                        <div className="flex items-baseline gap-1 text-[15px]">
-                            <span className="font-medium text-gray-700">{rating}</span>
-                            <span className="text-gray-500">({reviewCount} reviews)</span>
-                        </div>
+                    <div className="md:mt-1 flex items-center justify-center md:justify-start gap-1">
+                        <Star className="h-4 w-4.5 text-[#FACC15] fill-[#FACC15]" />
+                        
+                        <span className="body-regular text-text-body-subtle">
+                            {rating?.toFixed(1)} ({reviewCount} reviews)
+                        </span>
                     </div>
                 </div>
 
             </CardContent>
 
-            <CardFooter>
-                {/* Bottom Section: Call to Action */}
-                <Button asChild variant="brand" className="w-full text-base py-6 rounded-lg font-semibold">
-                    <Link href={imageUrl}>View Profile</Link>
-                </Button>
+            <CardFooter className="w-full border-none">
+                <ViewProfileButton doctorID={id}/>
             </CardFooter>
 
         </Card>

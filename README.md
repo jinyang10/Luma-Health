@@ -2,7 +2,7 @@
 
 A full-stack hospital appointment and admin management system (in development).
 
-Luma Health is a real-world healthcare web app: patients can book appointments and manage their profiles; staff can run clinic operations from a role-based admin dashboard. It is a portfolio project built with a modern AI-assisted workflow.
+Luma Health is a real-world healthcare web app: patients can book appointments and manage their profiles; staff can run clinic operations from a role-based admin dashboard. It is a project built with a modern AI-assisted workflow.
 
 **Status:** Frontend in progress. Layout, design system, and core UI components are in place. No database or authentication yet.
 

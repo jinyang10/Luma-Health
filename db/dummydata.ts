@@ -41,7 +41,7 @@ specialty: "Neurology",
 rating: 4.9,
 reviewCount: 212,
 imageUrl:
-"https://images.unsplash.com/photo-1612349317150-e413f6a5b16e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZG9jdG9yfGVufDB8fDB8fHww",
+"https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yfGVufDB8fDB8fHww",
 },
 {
 id: "doc-3",
